@@ -31,7 +31,7 @@ public class Muro extends Entity {
 		
 		FixtureDef fd = new FixtureDef();
 		fd.shape = shape;
-		fd.friction = 0.5f;
+		fd.friction = 0.1f;
 		
 		body = getGame().getWorld().getWorldF().createBody(bodyDef);
 		//body.createFixture(shape, 0.0f);

@@ -53,7 +53,7 @@ public class CuerpoPersonaje extends Entity{
 		FixtureDef fd = new FixtureDef();
 		fd.shape = box;
 //		fd.density = 0.5f;
-		fd.friction = 50f;        
+		fd.friction = 1f;        
 //		fd.restitution = 0.2f;
 
 
