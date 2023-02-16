@@ -29,7 +29,7 @@ public abstract class Game extends AnimationTimer {
 	private long lastNanoTime;
 	private float timeDifference; // in seconds
 	private GraphicsContext graphicsContext;
-	private WorldF mundo = new WorldF();
+	private Physics physics = new Physics();
 
 	public Game(Canvas canvas) {
 
@@ -76,7 +76,7 @@ public abstract class Game extends AnimationTimer {
 	}
 
 	protected void applyPhysics(float timeDifference) {
-		mundo.update(timeDifference);
+		physics.update(timeDifference);
 	}
 
 	protected void render(GraphicsContext gc) {
@@ -123,9 +123,10 @@ public abstract class Game extends AnimationTimer {
 	public final ObservableSet<KeyCode> getInput() {
 		return this.inputProperty().get();
 	}
-
-	public WorldF getWorld() {
-		return mundo;
+	
+	public Physics getPhysics() {
+		return physics;
 	}
+
 	
 }
