@@ -65,22 +65,22 @@ public class Controller implements Initializable {
 				switch (evento.getCode().toString()) {
 				case "RIGHT":
 					derecha = true;
-					x = 120;
+					x = 100;
 					mover();
 					break;
 				case "LEFT":
 					izquierda = true;
-					x = -120;
+					x = -100;
 					mover();
 					break;
 				case "UP":
 					arriba = true;
-					y = -120;
+					y = -100;
 					mover();
 					break;
 				case "DOWN":
 					abajo = true;
-					y = 120;
+					y = 100;
 					mover();
 					break;
 				}
@@ -120,8 +120,9 @@ public class Controller implements Initializable {
 
 	public void mover() {
 
+		
 
-		if (derecha) {		
+		if (derecha) {	
 //			float desiredVel =  new Vec2(x,y);
 			game.getCp().getBodyF().applyLinearImpulse(new Vec2(x,y), new Vec2(game.getCp().getBodyF().getWorldCenter()));	
 			//game.getWorld().getWorldF().setGravity(new Vec2(0.1f, 10f));
@@ -134,12 +135,15 @@ public class Controller implements Initializable {
 
 		if (arriba) {
 			game.getCp().getBodyF().applyLinearImpulse(new Vec2(x,y), new Vec2(game.getCp().getBodyF().getWorldCenter()));
-			//game.getWorld().getWorldF().setGravity(new Vec2(0f, -10f));
+			//game.getCp().getBodyF().applyAngularImpulse(1000f);
+//			game.getWorld().getWorldF().setGravity(new Vec2(0f, -0.1f));
+//			game.getWorld().getWorldF().setGravity(new Vec2(0f, 0.8f));
 		}
 		
 		if (abajo) {
 			game.getCp().getBodyF().applyLinearImpulse(new Vec2(x,y), new Vec2(game.getCp().getBodyF().getWorldCenter()));
-			game.getWorld().getWorldF().setGravity(new Vec2(0f, 15f));
+			//game.getWorld().getWorldF().setGravity(new Vec2(0f, 15f));
+			
 		}
 		
 
@@ -148,8 +152,8 @@ public class Controller implements Initializable {
 	public void parar() {
 //		game.getCp().getBodyF().setLinearVelocity(new Vec2(0.0f,1f));
 //		game.getCp().getBodyF().setAngularVelocity(-0.01f);
-		game.getCp().getBodyF().applyLinearImpulse(new Vec2(0,0), new Vec2(game.getCp().x,game.getCp().y));
+//		game.getCp().getBodyF().applyLinearImpulse(new Vec2(0,0), new Vec2(game.getCp().x,game.getCp().y));
 		System.out.println(game.getCp().getBodyF().getLinearVelocity());
-		game.getWorld().getWorldF().setGravity(new Vec2(0f, 0.1f));
+		//game.getWorld().getWorldF().setGravity(new Vec2(0f, 0.1f));
 	}
 }

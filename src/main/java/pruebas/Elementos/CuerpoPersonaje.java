@@ -52,7 +52,7 @@ public class CuerpoPersonaje extends Entity{
 		//define fixture of the body.
 		FixtureDef fd = new FixtureDef();
 		fd.shape = box;
-//		fd.density = 0.5f;
+//		fd.density = 2f;
 		fd.friction = 1f;        
 //		fd.restitution = 0.2f;
 
