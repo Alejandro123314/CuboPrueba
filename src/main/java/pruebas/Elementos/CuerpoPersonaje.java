@@ -23,12 +23,12 @@ public class CuerpoPersonaje extends Entity{
 		this.width = 10f;
 		this.height = 10f;
 
-		InvocarPersonaje();
+		invocarPersonaje();
 		
 //		initBody();
 	}
 	
-	public void InvocarPersonaje(){
+	public void invocarPersonaje(){
 
 		//The complete code snippet would look like:
 		//body definition
