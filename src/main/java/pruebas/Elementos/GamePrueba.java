@@ -9,7 +9,7 @@ import javafx.scene.input.KeyCode;
 
 public class GamePrueba extends Game {
 
-	CuerpoPersonaje cp = new CuerpoPersonaje(this, 120, 50);
+	private CuerpoPersonaje cp;
 
 	public GamePrueba(Canvas canvas) {
 		super(canvas);
@@ -18,7 +18,12 @@ public class GamePrueba extends Game {
 	@Override
 	protected void init() {
 
-		getEntities().addAll(new CuerpoPersonaje(this, 120, 50), new Muro(this, 0, getHeight() - 20f, getWidth(), 2));
+		cp = new CuerpoPersonaje(this, 120, 50);
+		
+		getEntities().addAll(
+				cp,
+				new Muro(this, 0, getHeight() - 20f, getWidth(), 2)
+			);
 
 	}
 
@@ -42,10 +47,7 @@ public class GamePrueba extends Game {
 			y = 100f;
 		}
 
-		Vec2 move = new Vec2(x, y);
-		System.out.println(move);
-		
-		cp.getBodyF().applyLinearImpulse(move, cp.getBodyF().getWorldCenter());
+		cp.move(new Vec2(x, y));
 
 	}
 }

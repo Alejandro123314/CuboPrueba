@@ -5,6 +5,7 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
+import org.jbox2d.dynamics.World;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -22,20 +23,7 @@ public class Muro extends Entity {
 		this.width = width;
 		this.height = height;
 		
-		BodyDef bodyDef = new BodyDef();
-		bodyDef.type = BodyType.STATIC;
-		bodyDef.position.set(x, y);
-
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(width * 2.0f, height * 2.0f);
-		
-		FixtureDef fd = new FixtureDef();
-		fd.shape = shape;
-		fd.friction = 0.1f;
-		
-		body = getGame().getWorld().getWorldF().createBody(bodyDef);
-		//body.createFixture(shape, 0.0f);
-		body.createFixture(fd);
+		initBody(game.getPhysics().getWorld());
 	}
 	
 	public void render(GraphicsContext gc) {
@@ -49,6 +37,24 @@ public class Muro extends Entity {
 	public void update(float timeDifference) {
 		x = body.getPosition().x;
 		y = body.getPosition().y;
+	}
+
+	@Override
+	protected void initBody(World world) {
+		
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.STATIC;
+		bodyDef.position.set(x, y);
+
+		PolygonShape shape = new PolygonShape();
+		shape.setAsBox(width * 2.0f, height * 2.0f);
+		
+		FixtureDef fd = new FixtureDef();
+		fd.shape = shape;
+		fd.friction = 0.1f;
+		
+		body = world.createBody(bodyDef);
+		body.createFixture(fd);		
 	}
 
 }
