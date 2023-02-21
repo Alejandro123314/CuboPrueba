@@ -30,7 +30,7 @@ public abstract class Game extends AnimationTimer {
 	private float timeDifference; // in seconds
 	private GraphicsContext graphicsContext;
 	private Physics physics = new Physics();
-
+	
 	public Game(Canvas canvas) {
 
 		graphicsContext = canvas.getGraphicsContext2D();
