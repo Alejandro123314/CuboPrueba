@@ -55,6 +55,7 @@ public class Muro extends Entity {
 		
 		body = world.createBody(bodyDef);
 		body.createFixture(fd);		
+		body.setUserData(this);
 	}
 
 }

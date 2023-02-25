@@ -1,7 +1,9 @@
 package pruebas.Elementos;
 
+
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
+
 
 public class Physics {
 
@@ -10,8 +12,11 @@ public class Physics {
 
 	private float physicsTime = 0.0f;
 	private float physicsTimeStep = 1.0f / 60.0f;
-	private int velocityIterations = 8;
-	private int positionIteration = 3;
+//	private int velocityIterations = 8;
+//	private int positionIteration = 3;
+	int velocityIterations = 6;
+	int positionIteration = 2;
+
 
 	public void update(float dt) {
 
@@ -34,5 +39,7 @@ public class Physics {
 	public World getWorld() {
 		return world;
 	}
+
+
 
 }

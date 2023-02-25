@@ -1,5 +1,6 @@
 package pruebas.Elementos;
 
+import org.jbox2d.collision.shapes.MassData;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -13,7 +14,8 @@ import javafx.scene.paint.Color;
 
 public class CuerpoPersonaje extends Entity {
 
-	private Body body;
+	public Body body;
+	FixtureDef fd;
 
 	public CuerpoPersonaje(Game game, float posX, float posY) {
 		super(game);
@@ -45,11 +47,10 @@ public class CuerpoPersonaje extends Entity {
 //		box.setAsBox(x/5f, y/5f);  aqui se vuelve tamaño estandar
 
 		box.setAsBox(x, y);
-
 		// box.m_radius = 0.5f;
 
 		// define fixture of the body.
-		FixtureDef fd = new FixtureDef();
+		fd = new FixtureDef();
 		fd.shape = box;
 //		fd.density = 2f;
 		fd.friction = 20f;
@@ -59,9 +60,21 @@ public class CuerpoPersonaje extends Entity {
 		body = world.createBody(bd);
 		body.createFixture(fd);
 		body.getLinearVelocity();
-
+		MassData massData = new MassData();
+		massData.mass = 0.5f;
+		body.setMassData(massData);
+		body.setUserData(this);
 	}
 
+	public FixtureDef getFd() {
+		return fd;
+	}
+	
+	 public void onCollision(Muro m) {
+	        System.out.println("He colisionado con muro");
+	    }
+
+	
 	public void render(GraphicsContext gc) {
 
 		gc.setFill(Color.BLACK);
@@ -92,5 +105,7 @@ public class CuerpoPersonaje extends Entity {
 		x = body.getPosition().x;
 		y = body.getPosition().y;
 	}
+	
+	
 
 }
